@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manufacturer: MyString
+  model: MyString
+  os_version: MyString
+  screen: 1
+  active: false
+  phone_number: MyString
+  ios: false
+  location: MyString
+  image: MyString
+
+two:
+  manufacturer: MyString
+  model: MyString
+  os_version: MyString
+  screen: 1
+  active: false
+  phone_number: MyString
+  ios: false
+  location: MyString
+  image: MyString
