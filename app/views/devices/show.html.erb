@@ -1,0 +1,29 @@
+<h1> <%= @device.manufacturer %> <%= @device.model %> </h1>
+<% if @device.ios %>
+  <h2><li>iOS <%= @device.os_version %></li></h2>
+<% else %>
+  <h2><li>Android <%= @device.os_version %></li></h2>
+<% end %>
+<h2><li>Screen: <%= @device.screen %> ppi</li></h2>
+
+<h2><li>Located at <%= @device.location %> office </li></h2>
+<h2><li>Availability: Not implemented yet</li></h2>
+
+<img src="<%= @device.image %>"> </a>
+
+
+
+<p>
+=============================
+<p>
+<p>
+<!-- NEW ORDER FORM -->
+
+<!-- END ORDER FORM -->
+<p>   
+<p>
+=============================
+<p>
+
+<p>   
+<div class="button"> <a href="/"> Return to list </a> </div>
