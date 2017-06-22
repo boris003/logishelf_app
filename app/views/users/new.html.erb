@@ -1,20 +1,19 @@
 <h1>Please provide following info:</h1>
 <%= form_tag '/users', method: :post do  %>
-  <p><div>
+  <br>
     Your Name: <input type="text" name="name">
-  </div></p>
-  <p><div>
+  <br>
+  <br>
     Email: <input type="email" name="email">
-  </div>
-  *email has to be within logitech.com domain</p>
-  <div>
+  <p>*email has to be within logitech.com domain</p>
+  <br>
     Password: <input type="password" name="password">
-  </div>
-  <div>
+  <br>
+  <br>
     Confirm Password: <input type="password" name="password_confirmation">
-  </div>
-  <p><div>
+  <br>
+  <br>
     Location: <input type="text" name="location">
-  </div></p>
-  <p><input type="submit" value="Submit"></p>
+  <br>
+  <br><input type="submit" value="Submit"><br>
 <% end %>

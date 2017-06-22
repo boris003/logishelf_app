@@ -1,0 +1,34 @@
+<div>
+  <% if @user && @user.errors.any? %>
+    <h3><%= @user.errors.count %> errors prohibited this product from being saved</h3>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+
+<%= form_tag "/users/#{(@user.id)}", method: :patch do %>
+  <br>
+    Your Name: <input type="text" name="name" value="<%= @user.name %>">
+  <br>
+    Email: <input type="email" name="email" value="<%= @user.email %>">
+  <p>*email has to be within logitech.com domain</p>
+  <br>
+    Location: <input type="text" name="location" value="<%= @user.location %>">
+  <br>
+  <br>
+  <br>
+  
+  Change Password
+  <br>
+  Password: <input type="password" name="password">
+  <br>
+  Confirm Password: <input type="password" name="password_confirmation">
+
+
+  <input type="submit" value="Save changes">
+
+<% end %>
