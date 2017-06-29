@@ -1,3 +1,7 @@
+<div ng-app="app">
+  <div ng-controller="musicCtrl" ng-init="setup()">
+
+
 <h1> All available devices </h1>
 
 
@@ -6,6 +10,44 @@
 <button class="button"> <a href="/signup"> Add new user </a></button>
 <button class="button"> <a href="/devices/new"> Add new device</a></button>
 <% end %>
+
+
+<br>=========== Where is the line?
+<!-- Lists for auto-complition -->
+    <datalist id="deviceModels">
+      <option ng-repeat="device in devices">{{device.model}}</option>
+    </datalist>
+
+
+    <h1> All Devices:</h1>
+    <br> Generic filter: <input ng-model="genericFilter">
+    <br> Filter by model: <input ng-model="deviceFilter" list="deviceModels">
+    <br>
+    <div>
+      <table style="width:100%", border=1>
+        <tr>
+          <th><button ng-click="toggleOrder('chord')">Chord</button></th>
+          <th><button ng-click="toggleOrder('key')">Instrument</button></th> 
+          <th><button ng-click="toggleOrder('key')">Key</button></th>
+        </tr>
+        <tr ng-repeat="devices in devices | filter: genericFilter | filter: {instrument: deviceFilter} ">
+          <td>{{ device.manufacturer }}</td>
+          <td>{{ device.model }}</td>
+          <td>{{ device.os_version }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>  
+</div>
+<br>=============
+
+
+
+
+
+
+
+
 
 
 <% @devices.each_slice(3) do |three_devices| %>
@@ -40,3 +82,8 @@
   </div>
 
 <% end %>
+
+
+
+  </div>  
+</div>

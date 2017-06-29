@@ -1,0 +1,47 @@
+<div>
+  <% if @device && @device.errors.any? %>
+    <h3> <%= @device.error.count %> errors prohibited this post from being saved </h3>
+    <ul>
+      <%= @device.errors.full_message.each do |message| %>
+        <li><%= message %></li>
+        
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<%= form_tag "/devices", method: :post do %>
+  <div> 
+    Manufacturer <input type="text" name="Manufacturer">
+  </div>
+  <div> 
+    Model <input type="text" name="Model">
+  </div>
+  <div> 
+    OS Version <input type="text" name="os_version">
+  </div>
+  <div> 
+    Screen PPI <input type="text" name="screen">
+  </div>
+  <div> 
+    Active <input type="text" name="active">
+  </div>
+  <div> 
+    Description <input type="text" name="description">
+  </div>
+  <div> 
+    Description <input type="text" name="description">
+  </div>
+  <div> 
+    Description <input type="text" name="description">
+  </div>
+  <div> 
+    Description <input type="text" name="description">
+  </div>
+  <div> 
+    Description <input type="text" name="description">
+  </div>
+  <input type="submit" value="Post!">
+
+
+<% end %>

@@ -11,11 +11,8 @@
 
 
 <%= form_tag "/users/#{(@user.id)}", method: :patch do %>
-  <br>
-    Your Name: <input type="text" name="name" value="<%= @user.name %>">
-  <br>
-    Email: <input type="email" name="email" value="<%= @user.email %>">
-  <p>*email has to be within logitech.com domain</p>
+  <br> Email: <%= @user.email %>
+  <br> Your Name: <input type="text" name="name" value="<%= @user.name %>">
   <br>
     Location: <input type="text" name="location" value="<%= @user.location %>">
   <br>
