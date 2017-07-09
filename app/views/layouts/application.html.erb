@@ -15,75 +15,86 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
-<!-- 
-          </button>
-          <a class="navbar-brand" href="/">LogiShelf</a> -->
         </div>
-        <nav class="navbar navbar-light bg-faded">
-          <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/">
             <img src="https://media.licdn.com/media-proxy/ext?w=800&h=800&hash=YWjkUQ1WfQolclthgBglwiUmJvY%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta9Er0VC6g1UQzR436bqE40y_6QgIaY3bDS-gXCzFporXPxizJpWZIPb0ugdWLw" width="30" height="30" class="d-inline-block align-top" alt="">
-            LogiShelf
-          </a>
-        </nav>
-        
-        <% if current_user %>
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/logout">Log Out</a>
-            <a class="navbar-brand" href="/users/<%= current_user.id %>/edit">Edit profile</a>
-          </div>
-        <% else %>
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/login">Log In</a>
-            <a class="navbar-brand" href="/signup">Create an Account</a>
-          </div>
-        <% end %>
+        </a>
+        <a class="navbar-brand" href="/">LogiShelf</a>
+        <ul class="nav navbar-nav navbar-left">
+          <a class="navbar-brand" href="/available">Show available devices only</a>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Sort by os version <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/?sort=low_to_high"> Low to High </a></li>
+              <li><a href="/?sort=high_to_low"> High to Low </a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">If none of the above works. Well... Too bad!</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Categories <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+
+              <li><a href="/categories/ios"> iOS </a></li>
+              <li><a href="/categories/android"> Android </a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/categories/windows"> Windows </a></li>
+            </ul>
+          </li>
+        </ul>          
+        <ul class="nav navbar-nav navbar-right">
           
-          <ul class="nav navbar-nav navbar-right">
+
+          <!-- LOGIN -->
           <% if current_user %>
-            <li>Hello <%= current_user.name %> !</li>
+            <li><p class="navbar-text"> Hello <%= current_user.name %> ! </p> </li>
+            <li><a class="navbar-brand" href="/users/<%= current_user.id %>/edit">Edit profile</a></li>
+            <li><a class="navbar-brand" href="/logout">Log Out</a></li>
+          <% else %>
+            <li><p class="navbar-text">Already have an account?</p>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+              <ul id="login-dp" class="dropdown-menu">
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= form_tag "/login", method: :post, :class => 'form' do %>
+                        <div class="form-group">
+                        <label class="sr-only" for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" placeholder="Email address" required>
+                        </div>
+                        <div class="form-group">
+                          <label class="sr-only" for="password">Password</label>
+                          <input type="password" class="form-control" name="password" placeholder="Password" required>
+                          <div class="help-block text-right"><a href="">Forget the password ?</a>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="bottom text-center">
+                      New here ? <a href="/signup"><b>Join Us</b></a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
           <% end %>
-            <a class="navbar-brand" href="/available">Show available devices only</a>>
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Sort by os version <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/?sort=low_to_high"> Low to High </a></li>
-                <li><a href="/?sort=high_to_low"> High to Low </a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">If none of the above works. Well... Too bad!</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Categories <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-
-                <li><a href="/categories/ios"> iOS </a></li>
-                <li><a href="/categories/android"> Android </a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="/categories/windows"> Windows </a></li>
-              </ul>
-            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
     <% flash.each do |key, message|%>
-    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <%= message %>
-    </div>
-  <%end%>
-
-    <div class="container">
+      <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= message %>
+      </div>
+    <%end%>
     <%= yield %>
-  </div>
-  </body>
-</html>
-
-
-
-
-
   </body>
 </html>
