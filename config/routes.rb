@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/" => "devices#index"
+  get '/' => 'devices#index'
   resources :devices
 
 #     Prefix Verb   URI Pattern               Controller#Action
@@ -13,15 +13,17 @@ Rails.application.routes.draw do
 #            PUT    /devices/:id(.:format)      devices#update
 #            DELETE /devices/:id(.:format)      devices#destroy
 
-  get "/signup" => "users#new"
-  post "/users" => "users#create"
-  get "/users/:id/edit" => "users#edit"
-  patch "/users/:id" => "users#update"
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  get '/users/:id/edit' => 'users#edit'
+  patch '/users/:id' => 'users#update'
 
 
-  get "/login" => "sessions#new"
-  post "/login" => "sessions#create"
-  get "/logout" => "sessions#destroy"
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/available' => 'devices#constructions'
 
 
 end

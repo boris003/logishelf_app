@@ -39,5 +39,10 @@ class DevicesController < ApplicationController
     
   end
 
+  def constructions
+    render "constructions.html.erb"
+    
+  end
+
 
 end
