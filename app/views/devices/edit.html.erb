@@ -1,0 +1,59 @@
+<div>
+  <% if @device && @device.errors.any? %>
+    <h3> <%= @device.error.count %> errors prohibited this post from being saved </h3>
+    <ul>
+      <%= @device.errors.full_message.each do |message| %>
+        <li><%= message %></li>
+        
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<%= form_tag "/devices", method: :update do %>
+  <div> 
+    Manufacturer <input type="text" name="manufacturer" value="<%=@device.manufacturer%>">
+  </div>
+  <div> 
+    Model <input type="text" name="Model" value="<%=@device.model%>">
+  </div>
+  <div> 
+    OS Version <input type="text" name="os_version" value="<%=@device.os_version%>">
+  </div>
+  <div> 
+    Screen PPI <input type="text" name="screen" value="<%=@device.active%>">
+  </div>
+  <div> 
+    Active
+    <%if @device.active %>
+      <label class="switch">
+        <input type="checkbox" name="active" checked>
+        <div class="slider round"></div>
+      </label>
+    <%else%>
+      <label class="switch">
+        <input type="checkbox" name="active">
+        <div class="slider round"></div>
+      </label>
+    <%end%>
+  </div>
+  <div> 
+    Phone Number <input type="text" name="phone_number" value="<%=@device.phone_number%>">
+  </div>
+  <div>
+    OS
+    <% if @device.ios %>
+      <input type="radio" name="ios" value="true" checked> iOS
+      <input type="radio" name="ios" value="false"> Android
+    <% else %>
+      <input type="radio" name="ios" value="true"> iOS
+      <input type="radio" name="ios" value="false" checked> Android
+    <% end %>
+  </div>
+  <div> 
+    Image (URL) <input type="text" name="description" value="<%=@device.image%>">
+  </div>
+  <input type="submit" value="Update Info!">
+
+
+<% end %>

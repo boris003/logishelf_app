@@ -12,7 +12,7 @@
 
 <%= form_tag "/devices", method: :post do %>
   <div> 
-    Manufacturer <input type="text" name="Manufacturer">
+    Manufacturer <input type="text" name="manufacturer">
   </div>
   <div> 
     Model <input type="text" name="Model">
@@ -24,13 +24,19 @@
     Screen PPI <input type="text" name="screen">
   </div>
   <div> 
-    Active <input type="text" name="active">
+    Active
+    <label class="switch">
+      <input type="checkbox" name="active">
+      <div class="slider round"></div>
+    </label>
   </div>
   <div> 
     Phone Number <input type="text" name="phone_number">
   </div>
   <div> 
-    OS <input type="text" name="ios">
+    OS
+    <input type="radio" name="ios" value="true" checked> iOS
+    <input type="radio" name="ios" value="false"> Android
   </div>
   <div> 
     Image (URL) <input type="text" name="description">

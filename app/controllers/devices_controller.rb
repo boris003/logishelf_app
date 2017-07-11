@@ -14,12 +14,12 @@ class DevicesController < ApplicationController
   end
 
   def create
-    @new_device = Device.create(
+    @device = Device.create(
       manufacturer: params[:manufacturer],
       model: params[:model],
       os_version: params[:os_version],
       screen: params[:screen].to_i,
-      active: params[:active],
+      active: params[:active], #need to pass boolean
       phone_number: params[:phone_number],
       ios: params[:ios],
       location: current_user.location,
@@ -28,14 +28,27 @@ class DevicesController < ApplicationController
       user_id: 0
       )
     flash[:success] = "New device added!"
-    redirect_to "/"
+    redirect_to "/devices/#{@device.id}"
   end
 
   def edit
-    
+    @device =  Device.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    @post.update(
+      manufacturer: params[:manufacturer],
+      model: params[:model],
+      os_version: params[:os_version],
+      screen: params[:screen].to_i,
+      active: params[:active], #need to pass boolean
+      phone_number: params[:phone_number],
+      ios: params[:ios],
+      image: params[:image]
+      )
+    flash[:info] = "Information about this device is updated!"
+    redirect_to "/devices/#{@device.id}"
     
   end
 
