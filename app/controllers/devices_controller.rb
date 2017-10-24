@@ -19,7 +19,7 @@ class DevicesController < ApplicationController
       model: params[:model],
       os_version: params[:os_version],
       screen: params[:screen].to_i,
-      active: params[:active], #need to pass boolean
+      active: params[:active],
       phone_number: params[:phone_number],
       ios: params[:ios],
       location: current_user.location,
@@ -42,7 +42,7 @@ class DevicesController < ApplicationController
       model: params[:model],
       os_version: params[:os_version],
       screen: params[:screen].to_i,
-      active: params[:active], #need to pass boolean
+      active: params[:active],
       phone_number: params[:phone_number],
       ios: params[:ios],
       image: params[:image]
